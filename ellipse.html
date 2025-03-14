@@ -1,27 +1,138 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-   <style>
-        .ellipse {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组合：动态椭圆与简历</title>
+    <style>
+        /* 动态椭圆样式 */
+        @keyframes gradient {
+            0% { background: radial-gradient(circle at 20% 20%, #ff0000, #00ff00, #0000ff); }
+            50% { background: radial-gradient(circle at 80% 80%, #ff0000, #00ff00, #0000ff); }
+            100% { background: radial-gradient(circle at 20% 20%, #ff0000, #00ff00, #0000ff); }
+        }
+
+        .animated-ellipse {
             width: 300px;
             height: 200px;
             border-radius: 50%;
-            /* Apply the animation */
-            animation: changeGradient 5s infinite alternate;
+            animation: gradient 5s infinite;
+            margin: 20px auto;
         }
 
-        @keyframes changeGradient {
-            0% {
-                background: radial-gradient(circle at 10% 10%, #ff6347, #9370db);
-            }
-            100% {
-                background: radial-gradient(circle at 90% 90%, #ff6347, #9370db);
-            }
+        /* 简历 Grid 布局 */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
         }
+
+        .resume-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            grid-template-areas:
+                "header header header header"
+                "info info info photo"
+                "job job job job"
+                "work work work work"
+                "edu edu edu edu"
+                "social social social social"
+                "eval eval eval eval";
+            gap: 10px;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        .section {
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+
+        .header { grid-area: header; text-align: center; }
+        .basic-info { grid-area: info; display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; }
+        .photo { grid-area: photo; text-align: center; }
+        .job-intent { grid-area: job; }
+        .work-experience { grid-area: work; }
+        .education { grid-area: edu; }
+        .social-relations { grid-area: social; }
+        .self-evaluation { grid-area: eval; }
+
+        img { max-width: 100px; border-radius: 50%; }
+        ul, ol { padding-left: 20px; }
     </style>
 </head>
-
 <body>
-    <div class="ellipse"></div>
-</body>
+    <!-- 动态椭圆 -->
+    <div class="animated-ellipse"></div>
 
+    <!-- 简历内容 -->
+    <div class="resume-container">
+        <div class="header section">
+            <h2>个人简历</h2>
+        </div>
+        
+        <div class="basic-info section">
+            <div>姓名</div>
+            <div>简小丽</div>
+            <div>年龄</div>
+            <div>26</div>
+            <div>性别</div>
+            <div>女</div>
+            <div>地址</div>
+            <div>湖南 长沙 岳麓区</div>
+            <div>电话</div>
+            <div>135-0000-0000</div>
+            <div>婚姻状况</div>
+            <div>已婚</div>
+        </div>
+
+        <div class="photo section">
+            <img src="https://github.com/xudaikai/site/blob/main/img/my%20picture.jpg?raw=true" alt="头像">
+        </div>
+
+        <div class="job-intent section">求职意向：区域经理</div>
+
+        <div class="work-experience section">
+            <h3>工作经历</h3>
+            <ul>
+                <li>社区服务站慢病管理员
+                    <ol>
+                        <li>负责客户体检及结果解读</li>
+                        <li>健康风险评估与指导</li>
+                        <li>慢性病检测管理</li>
+                    </ol>
+                </li>
+                <li>药店店员（4年经验）
+                    <ol>
+                        <li>商品销售与客户服务</li>
+                        <li>库存管理与销售统计</li>
+                        <li>商品陈列与日常运营</li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+
+        <div class="education section">
+            <h3>教育经历</h3>
+            <p>中专学历（在读成人高考）</p>
+        </div>
+
+        <div class="social-relations section">
+            <h3>社会关系</h3>
+            <ol>
+                <li>家人从事教育行业</li>
+                <li>配偶具有商业人脉资源</li>
+            </ol>
+        </div>
+
+        <div class="self-evaluation section">
+            <h3>自我评价</h3>
+            <ol>
+                <li>市场分析与消费洞察能力</li>
+                <li>团队与资源管理经验</li>
+                <li>营销方案执行能力</li>
+            </ol>
+        </div>
+    </div>
+</body>
 </html>
