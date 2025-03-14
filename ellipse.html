@@ -1,0 +1,27 @@
+<html>
+<head>
+   <style>
+        .ellipse {
+            width: 300px;
+            height: 200px;
+            border-radius: 50%;
+            /* Apply the animation */
+            animation: changeGradient 5s infinite alternate;
+        }
+
+        @keyframes changeGradient {
+            0% {
+                background: radial-gradient(circle at 10% 10%, #ff6347, #9370db);
+            }
+            100% {
+                background: radial-gradient(circle at 90% 90%, #ff6347, #9370db);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ellipse"></div>
+</body>
+
+</html>
