@@ -1,0 +1,41 @@
+<html>
+<body>
+<style>
+@keyFrames fly
+{
+	from{top:400px;}
+	to{top:0px;}
+}
+.circle{width:100px;height:100px;border-radius:500px;}
+
+</style>
+<script>
+function getRandomSize() 
+{
+ return Math.floor(Math.random() * 101) + 50;
+}
+function makeballoon(c1)
+{
+let b=document.createElement('div');
+b.className='circle';
+b.id='b1';
+b.style.cssText='position:absolute;left:20px;animation:fly 10s 1';
+b.style.backgroundColor=c1;
+b.style.left=Math.round(Math.random()*800)+'px'   ;
+const size = getRandomSize();
+            b.style.width = `${size}px`;
+            b.style.height = `${size}px`;
+document.body.appendChild(b);
+}
+makeballoon('red');
+makeballoon('yellow')
+makeballoon('blue');
+makeballoon('gray')
+makeballoon('pink');
+makeballoon('green')
+makeballoon('black');
+makeballoon('orange')
+makeballoon('purple');
+makeballoon('yellow')
+
+</script>
