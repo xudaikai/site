@@ -2,16 +2,16 @@
 <html>
 <head>
     <style>
-        .equation { display: flex; gap: 5px; margin-bottom: 10px; }
-        input { padding: 5px; }
-        button { padding: 5px 10px; }
+        .equation { display: flex; gap: 5px; margin: 10px 0; }
+        input { padding: 6px; width: 60px; }
+        button { padding: 6px 12px; }
     </style>
 </head>
 <body>
     <div class="equation">
-        <input type="number" id="a" placeholder="a">x² + 
-        <input type="number" id="b" placeholder="b">x + 
-        <input type="number" id="c" placeholder="c"> = 0 
+        <input type="text" id="a">x² + 
+        <input type="text" id="b">x + 
+        <input type="text" id="c"> = 0 
         <button onclick="solveEquation()">Solve</button>
     </div>
     <div id="solutionArea">Solution area</div>
@@ -22,29 +22,21 @@
             const b = parseFloat(document.getElementById('b').value) || 0;
             const c = parseFloat(document.getElementById('c').value) || 0;
             const solutionArea = document.getElementById('solutionArea');
-            solutionArea.innerHTML = '';
 
             if (a === 0) {
-                if (b === 0) {
-                    solutionArea.innerHTML = c === 0 ? "方程恒成立，所有实数都是解" : "方程无解";
-                } else {
-                    const x = -c / b;
-                    solutionArea.innerHTML = `一次方程解：x = ${x.toFixed(2)}`;
-                }
+                solutionArea.textContent = b === 0 ? (c ? 'none' : 'all real numbers') : `x=${(-c / b).toFixed(2)}`;
                 return;
             }
 
             const discriminant = b * b - 4 * a * c;
             if (discriminant > 0) {
-                const sqrtD = Math.sqrt(discriminant);
-                const x1 = (-b + sqrtD) / (2 * a);
-                const x2 = (-b - sqrtD) / (2 * a);
-                solutionArea.innerHTML = `两个实数解：<br>x₁ = ${x1.toFixed(2)}<br>x₂ = ${x2.toFixed(2)}`;
+                const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                solutionArea.textContent = `x1=${x1.toFixed(2)}, x2=${x2.toFixed(2)}`;
             } else if (discriminant === 0) {
-                const x = -b / (2 * a);
-                solutionArea.innerHTML = `一个实数解：x = ${x.toFixed(2)}`;
+                solutionArea.textContent = `x=${(-b / (2 * a)).toFixed(2)}`;
             } else {
-                solutionArea.innerHTML = "无实数解"; // Δ<0时的输出
+                solutionArea.textContent = 'none';
             }
         }
     </script>
