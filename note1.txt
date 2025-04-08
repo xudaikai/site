@@ -1,0 +1,45 @@
+javascript Objects
+
+similar to C's struct 
+python's dictionary
+PHP associative array
+Java's map
+c++'s class/map/hashmap
+
+extension of array
+array:is map from number->value
+object: any->anytype
+key-->value
+object is a collection of key-value pairs
+
+syntax:
+let x={};
+let y={a:1,b:2.5,c:100};//similar to CSS
+let z={"a c":1,"bz":2.5,"c":100};
+attribute=field=key
+It's not necessary for all values to have the same type.Object can be inhomogeneous
+
+var studentrecord={
+id:"D1003435",
+name:"John Smith",
+register:function(i,n)
+{
+studentrecord.id=i;
+studentrecord.name=n;
+}
+}
+studentrecord.register(1,"abc");
+
+studentrecord also can be viewed as a family name using family name is to promote software reusability by reducing the chance of name collision
+
+studentrecord.keys
+studentrecord.values
+studentrecord.entries
+
+for loop:
+for(let value of studentrecord)//iteration/traversal/going through
+{
+	
+	console.log(value);
+}
+
