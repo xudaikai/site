@@ -1,0 +1,78 @@
+<html>
+
+<head>
+        <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .balloon {
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const colors = ['red', 'orange', 'yellow', 'green', 'black', 'blue', 'purple'];
+        const canvas = document.createElement('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+
+        const balloons = [];
+
+        function createBalloon() {
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const diameter = Math.random() * 50 + 20;
+            const x = Math.random() * (canvas.width - diameter);
+            const y = canvas.height;
+            const balloon = {
+                x,
+                y,
+                diameter,
+                color,
+                speed: Math.random() * 2 + 1,
+                growthRate: Math.random() * 0.1 + 0.01
+            };
+            balloons.push(balloon);
+        }
+
+        function drawBalloon(balloon) {
+            ctx.beginPath();
+            ctx.arc(balloon.x + balloon.diameter / 2, balloon.y + balloon.diameter / 2, balloon.diameter / 2, 0, Math.PI * 2);
+            ctx.fillStyle = balloon.color;
+            ctx.fill();
+        }
+
+        function updateBalloon(balloon) {
+            balloon.y -= balloon.speed;
+            balloon.diameter += balloon.growthRate;
+            if (balloon.y < canvas.height * 0.2) {
+                const index = balloons.indexOf(balloon);
+                if (index > -1) {
+                    balloons.splice(index, 1);
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (Math.random() < 0.01) {
+                createBalloon();
+            }
+            balloons.forEach(balloon => {
+                drawBalloon(balloon);
+                updateBalloon(balloon);
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+
+</html>    
