@@ -1,0 +1,42 @@
+open a web page/ajax/design a test
+
+synchronously open a web page
+
+Synchronous communication:
+two parties in the communication have to present at the same time.
+telephone call, broadcasting in live
+(1)open a web page
+(2)following task
+For synchronous comm,
+Task 2 will not get started at all before the
+task one completes
+
+A small timeout,few seconds
+Open web page in JS:
+let page = window.open(url,targetWindow,ways)
+
+ways:geometric properties of the opened window and style
+targetWindow:"_self","_blank","anyExistingname"     
+asynchronous communication
+:two parties involving in communication
+don't have to present at the same time.
+for instance,regular letter,emails,leaving a message
+
+(1)open a web page        
+(2)following task
+Task 2 get started right away after sending the request
+timeout is much longer,hours
+ajax;technology before 2010           
+mordern asynchous communication using Promise async function openpage (url)
+{method:'HEAD'});
+ret = response.ok;//boolean
+}catch(error)
+contst response = await fetch(url);
+if (response.ok==ture)
+{
+  let text = await response.text();
+  ///we expect the answer is the html codes with HTML table
+  //in home work
+
+   }
+testForm: let text = await response.text();
